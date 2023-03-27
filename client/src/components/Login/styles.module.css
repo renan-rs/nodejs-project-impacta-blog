@@ -6,6 +6,7 @@
 	align-items: center;
 	justify-content: center;
 	border:1px solid blue;
+	padding: 0 20px;
 }
 
 .login_form_container {
@@ -31,20 +32,24 @@
 }
 
 .form_container {
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: 0 20px;
 }
 
 .form_container h1 {
 	font-size: 40px;
 	margin-top: 0;
+	text-align: center;
 }
 
 .input {
 	outline: none;
 	border: none;
-	width: 370px;
+	/* width: 370px; */
+	width: 100%;
 	padding: 15px;
 	border-radius: 10px;
 	background-color: #edf5f3;
@@ -120,5 +125,8 @@
 		border-top-left-radius: 0;
 		border-bottom-right-radius: 10px;
 		border-bottom-left-radius: 0;
+	}
+	.input {
+		width: 370px;
 	}
 }
