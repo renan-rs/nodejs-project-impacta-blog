@@ -1,13 +1,13 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "Node.js | Express | MongoDB",
+  "description": "Back-end Blog project - Node.js | Express | MongoDB",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Renan Siqueira",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",

@@ -11,3 +11,4 @@ Node.js | Express | MongoDB
   - DATABASE - mongoDB URL
   - PORT - server port
   - JWT_SECRET - secret key for token
+- npm start

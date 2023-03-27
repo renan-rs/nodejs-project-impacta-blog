@@ -1,0 +1,24 @@
+.navbar{
+  background-color: #8a34ac;
+}
+span{
+  color:white;
+  display:none;
+  align-self: center;
+  font-size: 0.8rem;
+}
+
+#navbarBlog > div > button,
+#navbarBlog > div > a{
+  margin-top:20px;
+}
+
+@media (min-width: 576px) { 
+  span{
+    display:block;
+  }
+  #navbarBlog > div > button,
+  #navbarBlog > div > a{
+    margin-top:0;
+  }
+}
