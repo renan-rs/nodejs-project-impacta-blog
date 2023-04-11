@@ -1,4 +1,3 @@
-//Connect to Database
 const slugify = require("slugify");
 const Article = require("../models/Article");
 const { v4: uuidv4 } = require("uuid");
