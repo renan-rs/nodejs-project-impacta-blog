@@ -7,6 +7,7 @@ const NavBar = () => {
   const handleLogout = (e) => {
     //e.preventDefault();
     localStorage.removeItem("token");
+    localStorage.removeItem("userName");
     window.location = '/';
   }
   return (
@@ -21,14 +22,14 @@ const NavBar = () => {
           <a className="navbar-brand col-sm-3 me-0" href="/">Impacta Blog</a>
           <ul className="navbar-nav col-sm-6 justify-content-lg-center">
             <li className="nav-item me-3">
-              <a href="#" className="nav-link">Listar artigos</a>
+              <a href="/home" className="nav-link">Listar artigos</a>
             </li>
             <li className="nav-item me-3">
-              <a href="#" className="nav-link">Criar artigo</a>
+              <a href="/create" className="nav-link">Criar artigo</a>
             </li>
           </ul>
           <div className="d-flex col-sm-3 justify-content-lg-end">
-            <span className="me-3">Olá, {userName}</span>
+            <span className="me-3 logged-user">Olá, {userName}</span>
             {user ? <><button className="btn btn-outline-light" onClick={handleLogout}>Sair</button></>
                   : <><a className="btn btn-outline-light" href="/login" role="button">Entrar</a></>}
           </div>

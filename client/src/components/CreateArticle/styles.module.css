@@ -1,0 +1,16 @@
+.newarticle_container {
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	/* align-items: center; */
+	justify-content: center;
+	margin-top:50px;
+}
+
+.newarticle_form_container {
+	width: 900px;
+	height: 500px;
+	display: flex;
+  flex-direction: column;
+	padding: 0 20px;
+}
