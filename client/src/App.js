@@ -3,6 +3,7 @@ import Main from './components/Main/main';
 import Signup from './components/Signup/signup';
 import Login from './components/Login/login';
 import CreateArticle from "./components/CreateArticle/create-article";
+import EditArticle from "./components/EditArticle/edit-article";
 
 function App(){
   const user = localStorage.getItem("token");
@@ -18,6 +19,8 @@ function App(){
         <Route path="/signup" exact element={<Signup />} />
         {user && <Route path="/create" element={<CreateArticle />} />}
         <Route path="/create" element={<Navigate replace to="/login" />} />
+        {user && <Route path="/article/edit/:slug" element={<EditArticle />} />}
+        <Route path="/article/edit/:slug" element={<Navigate replace to="/login" />} />
       </Routes>
   );
 }

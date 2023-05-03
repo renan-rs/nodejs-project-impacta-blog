@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from './styles.module.css';
 import domPurify from 'dompurify';
+import Swal from "sweetalert2";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -21,6 +22,28 @@ function App() {
     fetchData();
   }, []);
 
+  const deleteArticle = (slug) => {
+    axios
+      .delete(`${process.env.REACT_APP_API}/article/${slug}`)
+      .then((response) => {
+        Swal.fire("Excluído!", response.data.message, "success");
+        fetchData();
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const confirmDelete = (slug) => {
+    Swal.fire({
+      title: "Deseja excluir esse artigo?",
+      icon: "warning",
+      showCancelButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteArticle(slug);
+      }
+    });
+  };
+
   return (
     <div className="">
       <NavBar />
@@ -37,8 +60,9 @@ function App() {
                     Autor: {article.author}, Criado em{" "}
                     {new Date(article.createdAt).toLocaleDateString()}
                   </div>
-                  <p className={`card-text mb-auto ${styles.article_content}`}>{domPurify.sanitize(article.content, { USE_PROFILES: { html: false } })}</p>
-                  
+                  <p className={`card-text mb-auto ${styles.article_content}`}>
+                    {domPurify.sanitize(article.content, { USE_PROFILES: { html: false } })}
+                  </p>
                   <div className="d-flex justify-content-between align-items-center">
                     <Link className={`${styles.readarticle} align-self-center`} to={`/article/${article.slug}`}>
                       <p className="">Continuar Lendo</p>
@@ -46,8 +70,10 @@ function App() {
                     
                   </div>
                   <div className="btn-group btn-group-sm">
-                    <button type="button" className="btn btn-sm btn-outline-success">Editar</button>
-                    <button type="button" className="btn btn-sm btn-outline-danger">Excluir</button>
+                    <Link to={`/article/edit/${article.slug}`} className="btn btn-sm btn-outline-success">
+                      Editar
+                    </Link>
+                    <button type="button" onClick={() => confirmDelete(article.slug)} className="btn btn-sm btn-outline-danger">Excluir</button>
                   </div>
                 </div>
               ))

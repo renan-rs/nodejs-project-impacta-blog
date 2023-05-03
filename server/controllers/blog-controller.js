@@ -36,4 +36,48 @@ exports.getAllArticles = async (req, res) => {
   }
 };
 
+//get single article
+exports.singleArticle = async (req, res) => {
+  const { slug } = req.params;
+  try{
+    const article = await Article.findOne({slug});
+    if(!article){
+      return res.status(400).json({ error: `Artigo com slug ${slug} não encontrado!` });
+    }
+    res.json(article);
+  } catch (err) {
+    return res.status(400).json({ error: "Erro interno ao retornar o artigo!" });
+  }
+};
 
+// update data
+exports.update = async (req, res) => {
+  const { slug } = req.params;
+  const { title, content, author } = req.body;
+  try{
+    const article = await Article.findOneAndUpdate(
+      { slug },
+      { title, content, author },
+      { new: true }
+    );
+    if(!article){
+      return res.status(400).json({ error: `Artigo com slug ${slug} não encontrado para atualizar!` });
+    }
+    res.json(article);
+  } catch (err) {
+    return res.status(400).json({ error: "Erro interno ao atualizar o artigo!" });
+  }
+};
+
+// delete article
+exports.remove = async (req, res) => {
+  try {
+    const { slug } = req.params;
+    await Article.findOneAndRemove({ slug });
+    res.json({
+      message: "Excluído com sucesso!",
+    })
+  } catch (err) {
+    return res.status(400).json({ error: "Erro ao deletar artigo!" });
+  }
+};
