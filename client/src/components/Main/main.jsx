@@ -22,27 +22,7 @@ function App() {
     fetchData();
   }, []);
 
-  const deleteArticle = (slug) => {
-    axios
-      .delete(`${process.env.REACT_APP_API}/article/${slug}`)
-      .then((response) => {
-        Swal.fire("Excluído!", response.data.message, "success");
-        fetchData();
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const confirmDelete = (slug) => {
-    Swal.fire({
-      title: "Deseja excluir esse artigo?",
-      icon: "warning",
-      showCancelButton: true,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        deleteArticle(slug);
-      }
-    });
-  };
+  
 
   return (
     <div className="">
@@ -73,7 +53,7 @@ function App() {
                     <Link to={`/article/edit/${article.slug}`} className="btn btn-sm btn-outline-success">
                       Editar
                     </Link>
-                    <button type="button" onClick={() => confirmDelete(article.slug)} className="btn btn-sm btn-outline-danger">Excluir</button>
+                    <button type="button" className="btn btn-sm btn-outline-danger">Excluir</button>
                   </div>
                 </div>
               ))
