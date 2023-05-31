@@ -4,6 +4,7 @@ import Signup from './components/Signup/signup';
 import Login from './components/Login/login';
 import CreateArticle from "./components/CreateArticle/create-article";
 import EditArticle from "./components/EditArticle/edit-article";
+import SingleArticle from "./components/SingleArticle/single-article";
 
 function App(){
   const user = localStorage.getItem("token");
@@ -21,6 +22,8 @@ function App(){
         <Route path="/create" element={<Navigate replace to="/login" />} />
         {user && <Route path="/article/edit/:slug" element={<EditArticle />} />}
         <Route path="/article/edit/:slug" element={<Navigate replace to="/login" />} />
+        {user && <Route path="/article/:slug" element={<SingleArticle />} />}
+        <Route path="/article/:slug" element={<Navigate replace to="/login" />} />
       </Routes>
   );
 }

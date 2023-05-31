@@ -69,3 +69,15 @@ exports.update = async (req, res) => {
   }
 };
 
+// delete article
+exports.remove = async (req, res) => {
+  try {
+    const { slug } = req.params;
+    await Article.findOneAndRemove({ slug });
+    res.json({
+      message: "Excluído com sucesso!",
+    })
+  } catch (err) {
+    return res.status(400).json({ error: "Erro ao deletar artigo!" });
+  }
+};

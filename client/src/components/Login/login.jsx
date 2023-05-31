@@ -15,7 +15,7 @@ const Login = () => {
     setData({...data, [input.name]: input.value});
   }
 
-  const handleSubmit = async (e) => {
+  const login = async (e) => {
     e.preventDefault();
     try {
       const url = `${process.env.REACT_APP_API}/auth`;
@@ -36,7 +36,7 @@ const Login = () => {
     <div className={styles.login_container}>
       <div className={styles.login_form_container}>
         <div className={styles.left}>
-          <form onSubmit={handleSubmit} className={styles.form_container}>
+          <form onSubmit={login} className={styles.form_container}>
             <h1>Acesse sua conta</h1>
             <input 
               type='email' 

@@ -4,7 +4,7 @@ import './NavBar.css';
 const NavBar = () => {
   const user = localStorage.getItem("token");
   const userName = localStorage.getItem("userName");
-  const handleLogout = (e) => {
+  const logout = (e) => {
     //e.preventDefault();
     localStorage.removeItem("token");
     localStorage.removeItem("userName");
@@ -30,7 +30,7 @@ const NavBar = () => {
           </ul>
           <div className="d-flex col-sm-3 justify-content-lg-end">
             <span className="me-3 logged-user">Olá, {userName}</span>
-            {user ? <><button className="btn btn-outline-light" onClick={handleLogout}>Sair</button></>
+            {user ? <><button className="btn btn-outline-light" onClick={logout}>Sair</button></>
                   : <><a className="btn btn-outline-light" href="/login" role="button">Entrar</a></>}
           </div>
         </div>

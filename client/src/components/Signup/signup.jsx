@@ -18,7 +18,7 @@ const Signup = () => {
     setData({...data, [input.name]: input.value});
   }
 
-  const handleSubmit = async (e) => {
+  const signup = async (e) => {
     e.preventDefault();
     try {
       const url = `${process.env.REACT_APP_API}/users`;
@@ -45,7 +45,7 @@ const Signup = () => {
           </Link>
         </div>
         <div className={styles.right}>
-          <form onSubmit={handleSubmit} className={styles.form_container}>
+          <form onSubmit={signup} className={styles.form_container}>
             <h1>Criar conta</h1>
             <input 
               type='text' 
